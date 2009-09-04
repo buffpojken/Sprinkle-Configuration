@@ -1,0 +1,3 @@
+This needs to be run as root for the current time. 
+
+Edit deploy.rb to set user and host.
