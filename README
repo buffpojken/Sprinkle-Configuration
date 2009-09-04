@@ -1,3 +1,3 @@
 This needs to be run as root for the current time. 
 
-Edit deploy.rb to set user and host.
+Edit deploy.rb to set user and host, then run "sprinkle -s setup.rb" to setup the host.
