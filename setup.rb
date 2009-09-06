@@ -24,6 +24,7 @@ require 'packages/server'
 require 'packages/search'
 require 'packages/scm'
 require 'packages/processing'
+require 'packages/monitoring'
 
 
 # Policies
@@ -35,6 +36,7 @@ require 'packages/processing'
 #   If there's only one implementation of a virtual package, it's selected automatically, otherwise
 #   the user is requested to select which one to use.
 
+
 policy :rails, :roles => :app do
   requires :rails, :version => '2.3.3'
   requires :appserver
@@ -43,14 +45,15 @@ policy :rails, :roles => :app do
   requires :search
   requires :scm
   requires :imageprocessing
+	requires :monitoring
 end
+
 
 puts %{
 	Setting up the standard-issue Flawless-server.\n
 	Note that this setup is only meant for Ubuntu/Debian systems, and mostly tested on Hardy, Intrepid and Jaunty\n
 	Choose webserver and SCM below:"
 	}
-
 
 # Deployment
 #
