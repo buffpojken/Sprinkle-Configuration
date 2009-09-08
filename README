@@ -1,3 +1,61 @@
-This needs to be run as root for the current time. 
+Overview
+-----------------------
+The Sprinkle-recipe will set up a server with the following.
 
-Edit deploy.rb to set user and host, then run "sprinkle -s setup.rb" to setup the host.
+1. Build-essentials, which include gcc, make, o.s.v.
+2. emacs
+3. Ruby 1.8.6, patchlevel 369 - including Ruby dependencies
+4. Rubygems 1.3.5
+5. Rails 2.3.3
+6. Gems
+-- Faker
+7. Apache 2.2.13 or Nginx 0.7.61
+8. Mongrel 1.1.5 with mongrel_cluster 1.0.5 or Thin 
+9. Mysql
+10. Sphinx 0.9.8.1 with mysql_dev-packages
+11. Git 1.6.3.3 or SVN
+12. Imagemagick
+13. Monit
+
+
+Installation Process
+-----------------------
+
+This process will guide you from a barebones fresh install of Ubuntu (tested on
+Hardy Heron och Jaunty Jackalope) to a full-blow Rails-stack hosting solution.
+This script needs to run as root on the server, but please remember to disable the
+root-user afterwards!
+
+$ = Run this on your local machine
+# = Run this as root on the server
+
+
+1. Install sprinkle;
+$ sudo gem install sprinkle
+
+2. Download the recipe from http://github.com/buffpojken/Sprinkle-Configuration/tree
+
+3. Move to the directory you just downloaded from github.
+$ cd PATH_TO_DIR
+
+4. Ping the server to make sure you have the correct ip.
+$ ping IP_TO_SERVER
+
+5. Edit deploy.rb in the Sprinkle Configuration; replace IP_TO_HOST with the ip of the server
+
+6. Run the provisioning scripts
+$ sprinkle -s setup.rb
+
+7. When prompted, provide the root-password to the server
+
+8. When done, disable the root-user on the server!
+
+
+Notes
+-----------------------
+
+At the moment, running this on a fresh GleSYS-vps throws few errors but nothing breaks. 
+This is due to /tmp being mounted as noexec from the start, to fix this - log in to the
+server as root and go to /etc/fstab. Edit parameters to allow exec from /tmp - this will make
+the errors go away.  
+

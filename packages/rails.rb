@@ -25,3 +25,8 @@ package :rails do
   gem 'rails'
   version '2.3.3'
 end
+
+package :gems do 
+	description "Install some gems often used"
+	gem "faker"
+end

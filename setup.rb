@@ -38,6 +38,8 @@ require 'packages/monitoring'
 
 
 policy :rails, :roles => :app do
+	requires :build_essential
+	requires :editors
   requires :rails, :version => '2.3.3'
   requires :appserver
   requires :database

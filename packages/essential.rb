@@ -11,7 +11,14 @@ package :build_essential do
     # Update the sources and upgrade the lists before we build essentials
     pre :install, pre_install_commands
   end
-	
 
 end
 
+package :editors do
+	description "Install emacs"
+	
+	apt "emacs" do
+		pre :install, "apt-get update"
+	end
+
+end
