@@ -17,14 +17,17 @@
 #  set of metadata including its installer type (eg. apt, source, gem, etc). Packages can have
 #  relationships to each other via dependencies.
 
-require 'packages/essential'
-require 'packages/rails'
-require 'packages/database'
-require 'packages/server'
-require 'packages/search'
-require 'packages/scm'
-require 'packages/processing'
-require 'packages/monitoring'
+Dir[File.dirname(__FILE__)+'/packages/*.rb'].each {|e| require e}
+
+
+# require 'packages/essential'
+# require 'packages/rails'
+# require 'packages/database'
+# require 'packages/server'
+# require 'packages/search'
+# require 'packages/scm'
+# require 'packages/processing'
+# require 'packages/monitoring'
 
 
 # Policies
@@ -38,21 +41,23 @@ require 'packages/monitoring'
 
 
 policy :rails, :roles => :app do
-	requires :build_essential
-	requires :editors
-  requires :rails, :version => '2.3.3'
+  requires :build_essential
+  requires :editors
+  requires :rails, :version => '3.0.0'
   requires :appserver
   requires :database
   requires :webserver
   requires :search
   requires :scm
   requires :imageprocessing
-	requires :monitoring
+  requires :monitoring
+  requires :messaging
+  requires :magic_beans
 end
 
 
 puts %{
-	Setting up the standard-issue Flawless-server.\n
+	Setting up the standard-issue Buffpojken-server.\n
 	Note that this setup is only meant for Ubuntu/Debian systems, and mostly tested on Hardy, Intrepid and Jaunty\n
 	Choose webserver and SCM below:"
 	}
@@ -70,7 +75,7 @@ deployment do
 
   # mechanism for deployment
   delivery :capistrano do
-    recipes 'deploy'
+    recipes File.dirname(__FILE__)+'/deploy.rb'
   end
 
   # source based package installer defaults

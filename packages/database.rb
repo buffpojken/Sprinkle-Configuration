@@ -5,5 +5,5 @@ end
 
 package :mysql_driver do
   description 'Ruby MySQL database driver'
-  gem 'mysql'
+  gem 'mysql2'
 end
