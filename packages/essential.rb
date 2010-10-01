@@ -11,6 +11,9 @@ package :build_essential do
     # Update the sources and upgrade the lists before we build essentials
     pre :install, pre_install_commands
   end
+  
+  # Without this, we can't set up a deployment-user with a custom password.
+  apt 'mkpasswd'
 
 end
 
@@ -20,5 +23,7 @@ package :editors do
 	apt "emacs" do
 		pre :install, "apt-get update"
 	end
+	
+	apt "nano"
 
 end

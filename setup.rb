@@ -53,6 +53,7 @@ policy :rails, :roles => :app do
   requires :monitoring
   requires :messaging
   requires :magic_beans
+  requires :deployment_preps
 end
 
 
@@ -84,6 +85,8 @@ deployment do
     archives '/usr/local/sources'
     builds   '/usr/local/build'
   end
+  
+  
 
 end
 

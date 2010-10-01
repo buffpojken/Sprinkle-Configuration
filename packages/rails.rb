@@ -23,6 +23,7 @@ package :rails do
   description 'Ruby on Rails'
   gem 'rails'
   version '3.0.0'
+  requires :ruby
 end
 
 package :gems do 
