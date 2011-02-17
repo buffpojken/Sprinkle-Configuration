@@ -41,19 +41,18 @@ Dir[File.dirname(__FILE__)+'/packages/*.rb'].each {|e| require e}
 
 
 policy :rails, :roles => :app do
-  requires :build_essential
-  requires :editors
-  requires :rails, :version => '3.0.0'
-  requires :appserver
-  requires :database
-  requires :webserver
-  requires :search
-  requires :scm
-  requires :imageprocessing
-  requires :monitoring
+  # requires :build_essential
+  # requires :editors
+  # requires :rails, :version => '2.3.5'
+  # requires :appserver
+  # requires :database
+  # requires :webserver
+  # requires :search
+  # requires :svn
+  # requires :git
+  # requires :imageprocessing
+  # requires :monitoring
   requires :messaging
-  requires :magic_beans
-  requires :deployment_preps
 end
 
 

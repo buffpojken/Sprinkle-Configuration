@@ -9,23 +9,9 @@ package :directories do
 end
 
 
-package :deployment_user do
-  description "Setup a deployment-user"
-  
-  noop do
-    puts "Get username:"
-    username = gets
-    puts "Get password:"
-    password = gets
-    pre :install , "useradd -m -p `mkpasswd #{password}` #{username}"
-    
-  end
-  
-end
 
 
 
 package :deployment, :provides => :deployment_preps do
   requires :directories
-  requires :deployment_user
 end
